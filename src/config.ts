@@ -1,0 +1,1 @@
+   export const API_URL: string = process.env.EXPO_PUBLIC_API_URL ?? "https://api-transporte-publico-8p74.onrender.com";

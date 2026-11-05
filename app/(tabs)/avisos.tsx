@@ -1,15 +1,18 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { router } from "expo-router";
+import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
+import { BannerRed } from "../../src/componentes/BannerRed";
 import { EstadoPantalla } from "../../src/componentes/EstadoPantalla";
 import { useAsync } from "../../src/hooks/useAsync";
-import { obtenerAvisos } from "../../src/servicios/avisos";
+import { obtenerAvisosYNotificar } from "../../src/servicios/avisos";
 import { useColores } from "../../src/tema";
 
 export default function Avisos() {
   const c = useColores();
-  const { estado, recargar } = useAsync(obtenerAvisos);
+  const { estado, recargar } = useAsync(obtenerAvisosYNotificar);
 
   return (
     <View style={{ flex: 1, backgroundColor: c.fondo }}>
+      <BannerRed />
       <EstadoPantalla estado={estado} mensajeVacio="No hay avisos vigentes." onReintentar={recargar}>
         {(avisos) => (
           <FlatList
@@ -17,14 +20,18 @@ export default function Avisos() {
             keyExtractor={(a) => a.id}
             contentContainerStyle={estilos.lista}
             renderItem={({ item }) => (
-              <View style={[estilos.tarjeta, { backgroundColor: c.tarjeta, borderColor: c.borde }]}>
+              <Pressable
+                onPress={() => router.push({ pathname: "/aviso/[id]", params: { id: item.id } })}
+                style={[estilos.tarjeta, { backgroundColor: c.tarjeta, borderColor: c.borde }]}
+                accessibilityRole="button"
+              >
                 <Text style={{ color: c.texto, fontWeight: "700" }}>{item.titulo}</Text>
                 <Text style={{ color: c.textoSuave }}>{item.detalle}</Text>
                 <Text style={{ color: c.alerta }}>
                   {item.gravedad.toUpperCase()}
                   {item.videoUrl ? " · con video" : ""}
                 </Text>
-              </View>
+              </Pressable>
             )}
           />
         )}

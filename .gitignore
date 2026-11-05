@@ -11,3 +11,7 @@ web-build/
 expo-env.d.ts
 # @end expo-cli
 src_backup/
+
+src_backup/
+.env
+*.zip

@@ -1,6 +1,6 @@
 // Datos falsos, tipados con los tipos del PRD.
 // NINGUNA pantalla importa este archivo: solo lo usan los servicios.
-import type { Aviso, Horario, Linea, Parada } from "../tipos";
+import type { Aviso, Horario, Linea, Parada, ReporteDeDemora } from "../tipos";
 
 export const lineasMock: Linea[] = [
   {
@@ -144,7 +144,8 @@ export const avisosMock: Aviso[] = [
       { latitud: -31.7345, longitud: -60.5230 },
       { latitud: -31.7360, longitud: -60.5215 },
     ],
-    videoUrl: "https://api.parana.gob.ar/v/desvio-corrientes.mp4",
+    // Video de PRUEBA público. Cuando llegue la API, viene la URL real.
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
   },
   {
     // Aviso SIN video, SIN trazado alternativo y SIN fecha de fin
@@ -157,5 +158,35 @@ export const avisosMock: Aviso[] = [
     gravedad: "informativo",
     trazadoAlternativo: null,
     videoUrl: null,
+  },
+];
+
+const haceMin = (min: number) => new Date(Date.now() - min * 60000).toISOString();
+
+// Reportes de pasajeros "del servidor" (fechas relativas a ahora para que siempre se vean vigentes)
+export const reportesMock: ReporteDeDemora[] = [
+  {
+    id: "rep-3390",
+    lineaId: "lin-05",
+    paradaId: "par-101",
+    usuarioId: "usr-320",
+    motivo: "no_paso",
+    comentario: "Hace 25 minutos que espero",
+    fotoUri: null,
+    confirmaciones: 2,
+    fechaHora: haceMin(15),
+    sincronizado: true,
+  },
+  {
+    id: "rep-3391",
+    lineaId: "lin-14",
+    paradaId: "par-101",
+    usuarioId: "usr-411",
+    motivo: "demorado",
+    comentario: null,
+    fotoUri: null,
+    confirmaciones: 0,
+    fechaHora: haceMin(40),
+    sincronizado: true,
   },
 ];
