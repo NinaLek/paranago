@@ -54,7 +54,7 @@ function VideoAviso({ id, url }: { id: string; url: string }) {
 
   return (
     <View style={{ gap: 8 }}>
-      <VideoView player={player} style={estilos.video} nativeControls allowsFullscreen />
+      <VideoView player={player} style={estilos.video} nativeControls fullscreenOptions={{ enable: true }} />
       {Platform.OS !== "web" &&
         (uriLocal ? (
           <Text style={{ color: c.textoSuave }}>▶ Reproduciendo la copia guardada en tu teléfono.</Text>

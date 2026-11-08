@@ -36,12 +36,7 @@
         "android.permission.USE_FINGERPRINT",
         "android.permission.VIBRATE",
         "android.permission.POST_NOTIFICATIONS"
-      ],
-      "config": {
-        "googleMaps": {
-          "apiKey": "REEMPLAZAR_CON_TU_API_KEY_DE_GOOGLE_MAPS"
-        }
-      }
+      ]
     },
     "plugins": [
       "expo-router",
@@ -78,6 +73,7 @@
           "color": "#1B6CA8"
         }
       ],
+      "@maplibre/maplibre-react-native",
       "expo-sensors",
       "expo-status-bar",
       "expo-video",

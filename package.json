@@ -4,6 +4,7 @@
   "main": "expo-router/entry",
   "dependencies": {
     "@expo/ui": "~58.0.27",
+    "@maplibre/maplibre-react-native": "^11.5.1",
     "@react-native-vector-icons/ionicons": "^13.1.5",
     "expo": "~58.0.23",
     "expo-camera": "~58.0.14",
@@ -35,7 +36,6 @@
     "react-dom": "19.3.0",
     "react-native": "0.88.1",
     "react-native-gesture-handler": "~3.3.0",
-    "react-native-maps": "1.29.11",
     "react-native-reanimated": "4.7.1",
     "react-native-safe-area-context": "~5.11.1",
     "react-native-screens": "~4.30.1",
