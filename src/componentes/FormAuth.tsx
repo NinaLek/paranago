@@ -22,7 +22,7 @@ export function FormAuth({ modo }: { modo: "ingreso" | "registro" }) {
     try {
       if (modo === "registro") await registrar(nombre, email, password);
       else await ingresar(email, password);
-      router.back();
+      //router.back();
     } catch (e) {
       setError(e instanceof Error ? e.message : "Ocurrió un error inesperado.");
     } finally {
