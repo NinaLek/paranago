@@ -63,7 +63,7 @@ export function FormAuth({ modo }: { modo: "ingreso" | "registro" }) {
             
             accessibilityLabel="Mostrar/ocultar contraseña"
             activeOpacity={0.8}>
-            <Ionicons name={mostrar ? "eye-outline" : "eye-off-outline"} size={22} color={"black"} />
+            <Ionicons name={mostrar ? "eye-outline" : "eye-off-outline"} size={22} color={'#fff'} />
         </TouchableOpacity>
       </View>
       {error && <Text style={{ color: c.error }}>{error}</Text>}
